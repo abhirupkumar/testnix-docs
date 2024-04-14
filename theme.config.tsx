@@ -17,6 +17,7 @@ const config: DocsThemeConfig = {
   },
   head: (
     <>
+      <link rel="icon" href="https://testnix.vercel.app/logo.png" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta property="og:title" content="TextNix Docs" />
       <meta property="og:description" content="TestNix is a easy to use split testing tool which autmatically detects the variants." />
