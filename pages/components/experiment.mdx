@@ -1,0 +1,19 @@
+# Experiment
+
+The ```<Experiment />``` component is used to wrap a set of ```<Variant />``` components. It will render one of the variants at random, unless the visitor is a returning visitor. In that case, the previously shown variant will be displayed again within a 24-hour period.
+
+When a variant is selected and displayed to your visitor, the ```<Experiment />``` component sends an event to the analytics server known as an impression.
+
+## Props
+
+- `experimentId` `string{:sh}` `required{:cs}`
+
+<p className="mt-4 ml-8">The Id is given in the testnix dashboard.</p>
+
+- `experimentHash` `string{:sh}` `required{:cs}`
+
+<p className="mt-4 ml-8">The Hash is given in the testnix dashboard.</p>
+
+- `children` `JSX Elements{:sh}` `required{:cs}`
+
+<p className="mt-4 ml-8">Children must be ```<Variant />``` component.</p>

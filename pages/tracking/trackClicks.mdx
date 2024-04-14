@@ -1,0 +1,60 @@
+import { Tabs } from 'nextra/components'
+
+# Tracking Clicks
+
+<p className="">Want to track clicks events?</p>
+
+TestNix enables you track clicks. Clicks are events that should not be counted as conversions, but they do indicate the user taking an important step in that direction. This allows you to monitor and improve your CTR, for example in the use cases shown below.
+
+- Tracking clicks on your Newsletter Sign Up button
+- Tracking clicks on your Survey buttons
+- Tracking clicks on your “Download my Template” button
+- Tracking clicks on your “Buy Now” button
+
+These are not quite conversions, because a visitor clicking “Buy Now” button does not automatically mean they will also submit the contact form.
+
+## Start Tracking Clicks
+
+<Tabs items={['React.js', 'Next.js']}>
+  <Tabs.Tab>
+  ```tsx filename="ClientComponent.tsx" copy
+import { useTestnix } from 'testnix/client'
+
+const ClientComponent = () => {
+  const { trackClicks } = useTestnix()
+
+  return (
+    <button onClick={() => trackClicks('experiment-id', 'variant-id', 'experiment-hash')}>Buy Now</button>
+  )
+}
+  ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+  ```tsx filename="ClientComponent.tsx" copy
+"use client";
+import { useTestnix } from 'testnix/client'
+
+const ClientComponent = () => {
+  const { trackClicks } = useTestnix()
+
+  return (
+    <button onClick={() => trackClicks('experiment-id', 'variant-id', 'experiment-hash')}>Buy Now</button>
+  )
+}
+  ```
+  </Tabs.Tab>
+</Tabs>
+
+## Parameters
+
+- `experimentId` `string{:sh}` `required{:cs}`
+
+<p className="mt-4 ml-8">The Id is given in the testnix dashboard.</p>
+
+- `experimentHash` `string{:sh}` `required{:cs}`
+
+<p className="mt-4 ml-8">The Hash is given in the testnix dashboard.</p>
+
+- `variantId` `JSX Elements{:sh}` `required{:cs}`
+
+<p className="mt-4 ml-8">Any unique Id can be provided.</p>

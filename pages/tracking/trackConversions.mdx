@@ -1,0 +1,107 @@
+import { Tabs } from 'nextra/components'
+
+# Tracking Conversions
+
+<p className="">Want to track conversion events?</p>
+
+To optimize your analytics, you must monitor how many individuals actually convert. A conversion is an event that occurs when a user does a desired action on your website. For example:
+
+- Someone subscribes your Newsletter.
+- Someone submits your Contact form.
+- Someone purchases the plan for your SaaS.
+
+This is by far the most important indicator for comparing the performance of your versions side by side in the TestNix dashboard. All you have to do is track the conversion in your app when a user does the appropriate action.
+
+## Start Tracking Conversions
+
+<Tabs items={['React.js', 'Next.js']}>
+  <Tabs.Tab>
+  ```tsx filename="ClientComponent.tsx" copy
+import { useState } from 'react'
+import { useTestNix } from 'testnix/client'
+ 
+const ClientComponent = () => {
+  const { trackConversions } = useTestNix()
+  const [email, setEmail] = useState('')
+ 
+  const signupForNewsletter = async (email: string) => {
+    const data = await await fetch('/api/newsletter', {
+        method: 'POST',
+        body: JSON.stringify({ email }),
+    })
+    const res = await data.json();
+    if(res.success) {
+        // track newsletter sign-up conversion
+        trackConversions('experiment-id', 'variant-id', 'experiment-hash') 
+    }
+  }
+ 
+  return (
+    <div>
+      <input
+        type='text'
+        value={email}
+        onChange={({ target }) => setEmail(target.value)}
+      />
+      <button onClick={() => signupForNewsletter(email)}>Sign up now</button>
+    </div>
+  )
+}
+ 
+export default ClientComponent;
+  ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+  ```tsx filename="ClientComponent.tsx" copy
+"use client";
+import { useMutation } from '@tanstack/react-query'
+import { useState } from 'react'
+import { useTestNix } from 'splitter-gg/client'
+ 
+const ClientComponent = () => {
+  const { trackConversions } = useTestNix()
+  const [email, setEmail] = useState('')
+ 
+  const { mutate: signupForNewsletter } = useMutation({
+    mutationFn: async (email: string) => {
+      await fetch('/api/newsletter', {
+        method: 'POST',
+        body: JSON.stringify({ email }),
+      })
+    },
+    onSuccess: () => {
+      // track newsletter sign-up conversion
+      trackConversions('experiment-id', 'variant-id', 'experiment-hash') 
+    },
+  })
+ 
+  return (
+    <div>
+      <input
+        type='text'
+        value={email}
+        onChange={({ target }) => setEmail(target.value)}
+      />
+      <button onClick={() => signupForNewsletter(email)}>Sign up now</button>
+    </div>
+  )
+}
+ 
+export default ClientComponent
+  ```
+  </Tabs.Tab>
+</Tabs>
+
+## Parameters
+
+- `experimentId` `string{:sh}` `required{:cs}`
+
+<p className="mt-4 ml-8">The Id is given in the testnix dashboard.</p>
+
+- `experimentHash` `string{:sh}` `required{:cs}`
+
+<p className="mt-4 ml-8">The Hash is given in the testnix dashboard.</p>
+
+- `variantId` `JSX Elements{:sh}` `required{:cs}`
+
+<p className="mt-4 ml-8">Any unique Id can be provided.</p>

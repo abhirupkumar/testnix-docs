@@ -1,0 +1,37 @@
+import { Cards, Card } from 'nextra/components';
+import { IoRocketSharp } from "react-icons/io5";
+import { FaCode } from "react-icons/fa6";
+
+export const MyCards = () => {
+    return (
+        <Cards>
+            <Card
+                icon={<IoRocketSharp />}
+                title="Quickstart"
+                href="/docs/guide/built-ins/callout"
+                children="Easy Set up in 5 minutes."
+            />
+            <Card
+                icon={<FaCode />}
+                title="API References"
+                href="/docs/guide/built-ins/callout"
+                children="Learn how to use TestNix API."
+            />
+        </Cards>
+    );
+};
+
+# Introduction
+Welcome to the home of your new documentation
+
+## Setting Up
+Welcome to the TestNix documentation! You can set up split tests for your project with TestNix in less than 5 minutes.
+
+## What are the benefits
+- Higher newsletter sign-ups
+- Increased recruiter engagement from your portfolio
+- A surge in customers on your paid SaaS-plan
+- …many more!
+
+## Get Started
+<MyCards />

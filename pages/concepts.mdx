@@ -1,0 +1,25 @@
+# How variants are chosen
+
+<p>This is how we determine which variant to show to new or returning visitors</p>
+
+## How does TestNix know which variant to show?
+
+We record every impression for each variety. Any Variant can be shown to a user for a 24-hour timeframe.
+
+However, there was **one major downside** with this approach.
+
+The decision on which variety to display when a user visits your site must be made quickly. Very quickly, in fact, because we cannot generate the site until we know which option to show a visitor. Imagine visiting a website only to discover that a component gets replaced with another quickly after the page loads. That would be a terrible UX.
+
+This specific method of determining our variation may appear more appealing on the dashboard, but it requires several processes and has been shown to be slow only the first time the website is loaded in a 24-hour timeframe.
+
+## How the decision making process works
+
+The odds of each variant being shown are equal.
+
+For example, assume we conduct a Split Test for our landing page layout. Each layout would be shown with the following probability:
+
+- Layout A, 33% chance
+- Layout B, 33% chance
+- Layout C, 33% chance
+
+This technique enables us to respond to your clients **almost instantly**. To provide a consistent user experience, repeat visitors will be presented the same variant within 24 hours.
