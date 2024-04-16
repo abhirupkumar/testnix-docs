@@ -1,5 +1,3 @@
-import { Tabs } from 'nextra/components'
-
 # Tracking Clicks
 
 <p className="">Want to track clicks events?</p>
@@ -15,21 +13,6 @@ These are not quite conversions, because a visitor clicking “Buy Now” button
 
 ## Start Tracking Clicks
 
-<Tabs items={['React.js', 'Next.js']}>
-  <Tabs.Tab>
-  ```tsx filename="ClientComponent.tsx" copy
-import { useTestnix } from 'testnix/client'
-
-const ClientComponent = () => {
-  const { trackClicks } = useTestnix()
-
-  return (
-    <button onClick={() => trackClicks('experiment-id', 'variant-id', 'experiment-hash')}>Buy Now</button>
-  )
-}
-  ```
-  </Tabs.Tab>
-  <Tabs.Tab>
   ```tsx filename="ClientComponent.tsx" copy
 "use client";
 import { useTestnix } from 'testnix/client'
@@ -42,8 +25,6 @@ const ClientComponent = () => {
   )
 }
   ```
-  </Tabs.Tab>
-</Tabs>
 
 ## Parameters
 
